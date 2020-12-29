@@ -9,7 +9,8 @@
 	var	$window = $(window),
 		$body = $('body'),
 		$header = $('#header'),
-		$banner = $('#banner');
+		$banner = $('#banner'),
+		$video = $('#banner > video').get(0);
 
 	// Breakpoints.
 		breakpoints({
@@ -66,19 +67,33 @@
 	// Header.
 		if (!browser.mobile
 		&&	$header.hasClass('alt')
-		&&	$banner.length > 0) {
+		&&	$banner.length > 0
+    &&  !$video) {
 
 			$window.on('load', function() {
 
-				$banner.scrollex({
-					bottom:		$header.outerHeight(),
-					terminate:	function() { $header.removeClass('alt'); },
-					enter:		function() { $header.addClass('alt reveal'); },
-					leave:		function() { $header.removeClass('alt'); }
-				});
+        $banner.scrollex({
+          bottom:		$header.outerHeight(),
+          terminate:	function() { $header.removeClass('alt'); },
+          enter:		function() { $header.addClass('alt reveal'); },
+          leave:		function() { $header.removeClass('alt'); }
+        });
 
 			});
 
 		}
+
+    // video scroll
+    if ($video) {
+      $video.onloadeddata = function() {
+        $video.classList.remove('video-loading');
+        var videoLength = $video.duration;
+        $window.scroll(function(e) {
+          var scrollpercent = $(document).scrollTop() / ($(document).height() - $(window).height()) * 2;
+          if (scrollpercent > 1) return;
+          $video.currentTime = scrollpercent * videoLength;
+        });
+      };
+    }
 
 })(jQuery);
