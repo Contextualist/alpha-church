@@ -1148,12 +1148,14 @@
 		color: _palette(header, fg);
 		cursor: default;
 		height: 3.25em;
-		left: 0;
 		line-height: 3.25em;
 		position: fixed;
 		top: 0;
+		left: 0;
 		width: 100%;
 		z-index: 10000;
+		-webkit-backdrop-filter: blur(10px) brightness(75%);
+		backdrop-filter: blur(10px) brightness(75%);
 
 		h1 {
 			color: inherit;
@@ -1382,46 +1384,56 @@
 		padding: 12em 0 20em 0;
 		text-align: center;
 
-		:last-child {
-			margin-bottom: 0;
-		}
+		> #banner-txtbg {
+			-webkit-backdrop-filter: blur(10px) brightness(75%);
+			backdrop-filter: blur(10px) brightness(75%);
+			border-radius: 6px;
+			margin: 0 auto;
+			width: 48%;
+			height: 19em; /* TODO: make it responsive: wide, narrow, mobile, etc. */
+			padding: 3.4% 1%;
 
-		h2, h3, h4, h5, h6 {
-			color: #fff;
-		}
-
-		h2 {
-			font-size: 3.5em;
-			line-height: 1em;
-			margin: 0 0 0.5em 0;
-			padding: 0;
-		}
-
-		p {
-			font-size: 1.25em;
-			margin-bottom: 1.75em;
-		}
-
-		input[type="submit"],
-		input[type="reset"],
-		input[type="button"],
-		.button {
-			background-color: transparent;
-			box-shadow: inset 0 0 0 2px rgba(255,255,255,0.5);
-			color: #fff;
-			min-width: 12em;
-
-			&:hover {
-				background-color: rgba(255,255,255,0.1);
+			:last-child {
+				margin-bottom: 0;
 			}
 
-			&:active {
-				background-color: rgba(255,255,255,0.2);
+			h2, h3, h4, h5, h6 {
+				color: #fff;
 			}
 
-			&.primary {
-				background: #fff;
-				color: #666 !important;
+			h2 {
+				font-size: 3.5em;
+				line-height: 1em;
+				margin: 0 0 0.5em 0;
+				padding: 0;
+			}
+
+			p {
+				font-size: 1.25em;
+				margin-bottom: 1.75em;
+			}
+
+			input[type="submit"],
+			input[type="reset"],
+			input[type="button"],
+			.button {
+				background-color: transparent;
+				box-shadow: inset 0 0 0 2px rgba(255,255,255,0.5);
+				color: #fff;
+				min-width: 12em;
+
+				&:hover {
+					background-color: rgba(255,255,255,0.1);
+				}
+
+				&:active {
+					background-color: rgba(255,255,255,0.2);
+				}
+
+				&.primary {
+					background: #fff;
+					color: #666 !important;
+				}
 			}
 		}
 	}
