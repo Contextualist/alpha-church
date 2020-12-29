@@ -598,6 +598,11 @@
 			padding: 0 !important;
 		}
 
+		&.services {
+			display: flex;
+			justify-content: space-evenly;
+		}
+
 		&.features {
 			.features-row {
 				border-top: solid 2px _palette(border);

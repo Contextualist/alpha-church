@@ -11,15 +11,15 @@
 			{{ "<!-- Main -->" | safeHTML }}
 				<section id="main" class="container">
 
-					{{ if .Params.Services.title }}
-					<section class="box special">
-						<header class="major">
-							<h2>{{ .Params.Services.title }}</h2><a name="services"></a>
-							<p>{{ .Params.Services.text | markdownify }}</p>
-						</header>
+					<section class="box special services">
+              {{ range $ser := .Params.Services.service }}
+                <header class="major">
+                  <h2>{{ $ser.title }}</h2>
+                  <p>{{ $ser.text | markdownify }}</p>
+                </header>
+              {{ end }}
 						{{ partial "map" . }}
 					</section>
-					{{ end }}
 
 					{{ if .Params.Feature_icons.enable }}
 						{{ $tiles := .Params.Feature_icons.tile }}
