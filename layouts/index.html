@@ -29,11 +29,12 @@
 							<div class="features-row">
 								{{ range $index, $key := $tiles}}
 									<section>
-										{{ if $key.url }}<a href="{{ $key.url | absURL }}"><div>{{ end }}
+                    <a class="modal-btn" href="#modal-{{ $index }}"><div>
 											<span class="icon major {{ $key.icon_pack }} {{ $key.icon }} accent{{- $key.accent -}}"></span>
 											<h3>{{ $key.title }}</h3>
 											<p>{{ $key.text | markdownify }}</p>
-										{{ if $key.url }}</div></a>{{ end }}
+										</div></a>
+                    {{ partial "modal" (dict "index" $index "key" $key) }}
 									</section>
 									{{ if and (mod $index 2) (lt (add $index 1) $len) }}
 											</div>
@@ -77,7 +78,7 @@
 
 					<h2>{{ .Params.CTA.heading}}</h2>
 					<p>{{ .Params.CTA.message}}</p>
-					{{ partial "contact" .}}
+					{{ partial "contact" . }}
 
 				</section>
 {{ partialCached "footer" . }}

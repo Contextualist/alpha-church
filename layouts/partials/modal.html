@@ -1,0 +1,7 @@
+<div id="modal-{{ .index }}" class="detail-backdrop" tabindex="-1" onclick="history.back()">
+  <div class="detail box" onclick="event.stopPropagation();">
+    <span class="icon major fas fa-times-circle" onclick="history.back()"></span>
+    <div>{{ .key.detail | markdownify }}</div>
+  </div>
+</div>
+

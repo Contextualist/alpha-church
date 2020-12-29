@@ -121,6 +121,7 @@
 	// Based on css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
 		html {
 			box-sizing: border-box;
+			scroll-behavior: smooth;
 		}
 
 		*, *:before, *:after {
@@ -702,6 +703,53 @@
 		}
 	}
 
+
+	.detail-backdrop {
+		visibility: hidden;
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 10000;
+		-webkit-backdrop-filter: blur(8px) brightness(45%);
+		backdrop-filter: blur(8px) brightness(45%);
+
+		&:target {
+			visibility: visible;
+		}
+
+		> .detail {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			margin: auto;
+			min-height: 80vh;
+			max-height: 95vh;
+			max-width: 95vw;
+			width: 60em;
+			padding: 1em 5em;
+			overflow-x: scroll;
+
+			> .icon {
+				height: 2.7em;
+				line-height: 2.7em;
+				width: 2.7em;
+				font-size: .8rem;
+				position: sticky;
+				display: block;
+				top: 2em;
+				margin: 2em -4em; /* FIXME: in narrow, 2em 0em */
+			}
+
+			> div {
+				text-align: left;
+			}
+		}
+	}
+
+
 /* Icon */
 
 	.icon {
@@ -1140,6 +1188,7 @@
 	body.landing {
 		#page-wrapper {
 			padding-top: 0;
+			overflow-x: hidden;
 		}
 	}
 
