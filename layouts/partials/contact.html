@@ -1,31 +1,32 @@
-{{ if .Site.Params.Contact.text }}
-	<p>{{ .Site.Params.Contact.text }}
-	{{ if .Site.Params.Contact.phone }}
+{{ if .Params.Contact.text }}
+	<p>{{ .Params.Contact.text | markdownify }}
+	{{ with .Params.Contact.phone }}
 		<br />
-		<a href="tel:{{ .Site.Params.Contact.phone }}" target="_blank" aria-label="{{.Site.Params.Contact.phone }}">
+		<a href="tel:{{ . }}" target="_blank" aria-label="{{ . }}">
 			<i class="icon fas fa-phone-alt">
 				<span class="label">
-					{{ .Site.Params.Contact.phone }}
+					{{ . }}
 				</span>
 			</i>
 			&nbsp;
-			{{ .Site.Params.Contact.phone }}
+			{{ . }}
 		</a>
 	{{ end }}
-	{{ if .Site.Params.Contact.mail }}
+	{{ with .Params.Contact.email }}
 		<br />
-		<a href="mailto:{{ .Site.Params.Contact.mail }}" target="_blank" aria-label="{{.Site.Params.Contact.mail }}">
+		<a href="mailto:{{ . }}" target="_blank" aria-label="{{ . }}">
 			<i class="icon fas fa-envelope">
 				<span class="label">
-					{{ .Site.Params.Contact.mail }}
+					{{ . }}
 				</span>
 			</i>
 			&nbsp;
-			{{ .Site.Params.Contact.mail }}
+			{{ . }}
 		</a>
 	{{ end }}
 	</p>
 {{ end}}
+
 {{ if eq .Site.Params.Contact.service "netlify" }}
 	<form name="contact" method="POST" action="{{ .Site.Params.Contact.confirm_page }}" netlify>
 		<div class="row gtr-50 gtr-uniform">

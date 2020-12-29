@@ -1628,7 +1628,6 @@
 		background: _palette(accent2, bg);
 		color: _palette(accent2, fg);
 		padding: 3.5em 0 4em 0;
-		text-align: center;
 
 		a {
 			color: inherit;
@@ -1637,6 +1636,12 @@
 
 		h2, h3, h4, h5, h6 {
 			color: inherit;
+		}
+
+		p {
+			margin: 2em auto;
+			width: 16em;
+			font-size: 1.2rem;
 		}
 
 		form {
