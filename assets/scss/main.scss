@@ -1454,6 +1454,10 @@
 				background-size: cover;
 				filter: blur(10px);
 			}
+
+			@include breakpoint('<=mobile') {
+				height: 100%;
+			}
 		}
 
 		> #banner-txtbg {
@@ -1462,7 +1466,7 @@
 			border-radius: 6px;
 			margin: 0 auto;
 			width: 48%;
-			height: 19em; /* TODO: make it responsive: wide, narrow, mobile, etc. */
+			min-width: 16em;
 			padding: 3.4% 1%;
 
 			:last-child {
