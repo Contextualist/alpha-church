@@ -87,9 +87,13 @@
     if ($video) {
       $video.onloadeddata = function() {
         $video.classList.remove('video-loading');
-        var videoLength = $video.duration;
+        let videoLength = $video.duration;
+        let $doc = $(document);
+        let stt = 3;
+        if (/Version\/[0-9.]+ Safari/.test(navigator.userAgent)) stt = 1; // continuous scroll for Safari
         $window.scroll(function(e) {
-          var scrollpercent = $(document).scrollTop() / ($(document).height() - $(window).height()) * 2;
+          if ($doc.scrollTop() % stt != 0) return;
+          let scrollpercent = $doc.scrollTop() / ($doc.height() - $window.height()) * 2;
           if (scrollpercent > 1) return;
           $video.currentTime = scrollpercent * videoLength;
         });

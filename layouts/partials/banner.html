@@ -1,6 +1,9 @@
 <section id="banner">
   {{ with .Site.Params.Banner.video }}
-    <video muted playsinline src="{{ . | relURL }}" class="video-loading"></video>
+    <video muted playsinline class="video-loading">
+      {{ with .webm }} <source src="{{ . | relURL }}" type="video/webm"> {{ end }}
+      {{ with .mp4 }}   <source src="{{ . | relURL }}" type="video/mp4"> {{ end }}
+    </video>
   {{ end }}
   <div id="banner-txtbg">
     <h2>{{ .Site.Params.title }}</h2>
