@@ -765,7 +765,6 @@
 			background: _palette(accent1, bg);
 			border-radius: 100%;
 			color: _palette(accent1, fg-bold);
-			cursor: default;
 			display: inline-block;
 			height: 5.5em;
 			line-height: 5.5em;
@@ -1208,8 +1207,6 @@
 		left: 0;
 		width: 100%;
 		z-index: 10000;
-		-webkit-backdrop-filter: blur(10px) brightness(75%);
-		backdrop-filter: blur(10px) brightness(75%);
 
 		h1 {
 			color: inherit;
@@ -1325,7 +1322,7 @@
 
 		&.alt {
 			@include vendor('animation', 'none');
-			background: none;
+			background: _palette(accent2, bg);
 			color: rgba(255,255,255,0.75);
 			position: absolute;
 
@@ -1467,7 +1464,7 @@
 			margin: 0 auto;
 			width: 48%;
 			min-width: 16em;
-			padding: 3.4% 1%;
+			padding: 3.4% 4%;
 
 			:last-child {
 				margin-bottom: 0;
@@ -1507,7 +1504,7 @@
 				}
 
 				&.primary {
-					background: #fff;
+					background: _palette(accent5, fg-light);
 					color: #666 !important;
 				}
 			}
