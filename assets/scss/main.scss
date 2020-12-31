@@ -666,6 +666,30 @@
 			text-align: center;
 		}
 
+		&.postlist {
+			background: none;
+			padding: 0;
+
+			> .row {
+				justify-content: flex-end;
+				&:nth-child(4n+1) {
+					flex-direction: row-reverse;
+				}
+
+				@include breakpoint('>=normal') {
+					> :nth-child(1) {
+						width: auto;
+						min-width: 25%;
+						max-width: 50%;
+					}
+				}
+
+				img {
+					box-shadow: 0px .25rem 10px rgba(36,49,66,.2);
+				}
+			}
+		}
+
 		.image {
 			&.featured {
 				border-radius: 0;
@@ -1520,16 +1544,6 @@
 	#main {
 		padding: 4em 0 0 0;
 
-		&::before { /* to cover the video background on home page */
-			/* can't use position: absolute; it triggers weird rerendering */
-			display: block;
-			width: 150vw; /* overflow-x: hidden for #page-wrapper */
-			height: 71rem;
-			margin: 10rem 0 -82rem -30vw; /* 1. NEED REFIT TO CONTENT 2. DOESN'T WORK ON NARROWER */
-			content: '';
-			background: _palette(bg);
-		}
-
 		> header {
 			text-align: center;
 			margin: 0 0 3em 0;
@@ -1567,6 +1581,16 @@
 	body.landing {
 		#main {
 			margin-top: -14em;
+
+			&::before { /* to cover the video background on home page */
+				/* can't use position: absolute; it triggers weird rerendering */
+				display: block;
+				width: 150vw; /* overflow-x: hidden for #page-wrapper */
+				height: 71rem;
+				margin: 10rem 0 -82rem -30vw; /* 1. NEED REFIT TO CONTENT 2. DOESN'T WORK ON NARROWER */
+				content: '';
+				background: _palette(bg);
+			}
 		}
 	}
 

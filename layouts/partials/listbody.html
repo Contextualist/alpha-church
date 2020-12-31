@@ -1,8 +1,8 @@
-  <div class="box">
+  <div class="box postlist">
   {{ $pages := .Paginator.Pages }}
   {{ $len := (len $pages) }}
   {{ range $index, $key := $pages }}
-    {{ if .Params.images }}
+    {{ if .Params.image }}
       <div class="row no-collapse 50% uniform">
         <div class="col-6 col-12-mobilep">
           <a href="{{ .Permalink }}">{{ if .Draft }}DRAFT: {{end}}{{ .Title | markdownify }}</a>
@@ -10,7 +10,7 @@
           {{ with .Params.passage }} | {{ . | markdownify }} | {{ end }}
           <time class="date-meta">{{ .Date.Format "Jan 2, 2006" }}</time>
           <br>
-          {{ .Summary | plainify | safeHTML }}
+          {{ .Content | safeHTML }}
           {{ if .Truncated }}
             <a class="button small alt" href="{{ .Permalink }}" >
                 Read more<i class="fas fa-angle-double-right"></i>
@@ -20,7 +20,7 @@
         <div class="col-6 col-12-mobilep">
           <span class="image fit">
             <a href="{{ .Permalink }}">
-              <img src="{{ index .Params.images 0 | absURL }}"></img>
+              <img src="{{ .Params.image | absURL }}"></img>
             </a/>
           </span>
         </div>
@@ -30,7 +30,7 @@
       <a href="{{ .Permalink }}">{{ if .Draft }}DRAFT: {{end}}{{ .Title | markdownify }}</a>
       <time class="date-meta">({{ .Date.Format "Jan 2, 2006" }})</time>
       <br>
-      {{ .Summary | plainify | safeHTML }}
+      {{ .Content | safeHTML }}
       {{ if .Truncated }}
         <a class="button small alt" href="{{ .Permalink }}" >
             Read more<i class="fas fa-angle-double-right"></i>
