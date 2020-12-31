@@ -740,7 +740,11 @@
 				position: sticky;
 				display: block;
 				top: 2em;
-				margin: 2em -4em; /* FIXME: in narrow, 2em 0em */
+				margin: 2em -4em;
+				@include breakpoint('<=mobile') {
+					margin: 0 .5em 0 auto;
+					transform: translateY(-4em);
+				}
 			}
 
 			> div {
