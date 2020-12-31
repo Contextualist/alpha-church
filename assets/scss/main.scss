@@ -1633,6 +1633,16 @@
 		background: _palette(accent2, bg);
 		color: _palette(accent2, fg);
 		padding: 3.5em 0 4em 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+
+		img {
+			filter: brightness(0) invert(100%); /* make it white */
+			max-width: 90vw;
+			margin: 2em;
+		}
 
 		a {
 			color: inherit;
@@ -1644,7 +1654,7 @@
 		}
 
 		p {
-			margin: 2em auto;
+			margin: 2em;
 			width: 16em;
 			font-size: 1.2rem;
 			line-height: 1.5em;;
@@ -2226,7 +2236,7 @@
 		/* CTA */
 
 			#cta {
-				padding: 2.5em 1em 3em 1em;
+				padding: 2.5em 0 3em 0;
 			}
 
 	}
