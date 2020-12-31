@@ -1,12 +1,16 @@
+{{ with .Params.Contact.logo }}
+  <p>
+    <img src="{{ . }}">
+  </p>
+{{ end }}
+
 {{ if .Params.Contact.text }}
 	<p>{{ .Params.Contact.text | markdownify }}
 	{{ with .Params.Contact.phone }}
 		<br />
 		<a href="tel:{{ . }}" target="_blank" aria-label="{{ . }}">
 			<i class="icon fas fa-phone-alt">
-				<span class="label">
-					{{ . }}
-				</span>
+				<span class="label"> {{ . }} </span>
 			</i>
 			&nbsp;
 			{{ . }}
@@ -16,9 +20,17 @@
 		<br />
 		<a href="mailto:{{ . }}" target="_blank" aria-label="{{ . }}">
 			<i class="icon fas fa-envelope">
-				<span class="label">
-					{{ . }}
-				</span>
+				<span class="label"> {{ . }} </span>
+			</i>
+			&nbsp;
+			{{ . }}
+		</a>
+	{{ end }}
+	{{ with .Params.Contact.facebook }}
+		<br />
+		<a href="//facebook.com/groups/{{ . }}" target="_blank" aria-label="{{ . }}">
+			<i class="icon fab fa-facebook">
+				<span class="label"> {{ . }} </span>
 			</i>
 			&nbsp;
 			{{ . }}
