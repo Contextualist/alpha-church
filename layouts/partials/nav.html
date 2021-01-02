@@ -7,24 +7,37 @@
       <nav id="nav">
         <ul>
           {{ $currentPage := . }}
+            {{ if .Site.IsMultiLingual }}
+                <li>
+                    <a><i class="fas fa-language"></i>&#8287;<i class="fas fa-angle-down"></i></a>
+                    <ul>
+                      {{ $currentLanguage := .Site.Language }}
+                      {{ range $translation := .Page.AllTranslations }}
+                        {{ if ne $translation.Lang $currentLanguage.Lang }}
+                          <li><a href="{{ $translation.Permalink }}">{{ $translation.Language.LanguageName }}</a></li>
+                        {{ end }}
+                      {{ end }}
+                    </ul>
+                </li>
+            {{ end }}
           {{ range .Site.Menus.main }}
             {{ if .HasChildren }}
                 <li>
-                    <a href="{{ .URL | relURL }}"><i class="fas fa-angle-down"></i>
+                    <a href="{{ .URL | relLangURL }}"><i class="fas fa-angle-down"></i>
                         {{ .Name }}
                     </a>
                     <ul>
                       {{ range .Children }}
                           {{ if .HasChildren }}
                             <li>
-                              <a href="{{ .URL | relURL }}">{{ .Name }}</a>
+                              <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
                               <ul>
                               {{ range .Children }}
-                                <li><a href="{{ .URL |relURL }}">{{ .Name }}</a></li>
+                                <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
                               {{ end }}
                               </ul>
                           {{ else }}
-                            <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+                            <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
                           {{ end }}
                           </li>
                       {{ end }}
@@ -32,7 +45,7 @@
                   </li>
             {{ else }}
                 <li>
-                    <a href="{{ .URL | relURL }}">
+                    <a href="{{ .URL | relLangURL }}">
                         {{ .Pre }} {{ .Name }}
                     </a>
                 </li>

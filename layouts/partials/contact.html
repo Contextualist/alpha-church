@@ -1,5 +1,5 @@
 {{ with .Params.Contact.logo }}
-    <img src="{{ . }}">
+    <img src="{{ . | relURL }}">
 {{ end }}
 
 {{ if .Params.Contact.text }}
