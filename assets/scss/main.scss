@@ -1542,6 +1542,50 @@
 				}
 			}
 		}
+
+		.modal-btn {
+			position: absolute;
+			right: 4rem;
+			top: 7rem;
+			font-size: 1.5em;
+			color: white;
+			padding: .2em;
+			border-radius: 6px;
+			backdrop-filter: blur(10px) brightness(75%);
+			-webkit-backdrop-filter: blur(10px) brightness(75%);
+
+			@include breakpoint('<=mobile') {
+				top: 1rem;
+				right: 1rem;
+			}
+
+			> .icon {
+				color: white;
+				height: 1.1em;
+				width: 1.1em;
+			}
+		}
+
+		.detail {
+			min-height: 0;
+			width: 95vw;
+			padding: 0 !important;
+			> .icon {
+				position: absolute;
+				top: -1em;
+				right: 5em;
+				z-index: 10;
+				color: white;
+				background: none;
+				@include breakpoint('<=mobile') {
+					top: 5em;
+					right: 1em;
+				}
+			}
+			> video {
+				width: 100%;
+			}
+		}
 	}
 
 /* Main */
@@ -1900,7 +1944,6 @@
 				left: 0;
 				position: fixed;
 				top: 0;
-				width: 100%;
 				z-index: _misc(z-index-base) + 1;
 
 				.toggle {

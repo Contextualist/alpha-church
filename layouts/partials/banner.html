@@ -1,10 +1,27 @@
 <section id="banner">
+
   {{ with .Site.Params.Banner.video }}
     <video muted playsinline class="video-loading">
       {{ with .webm }} <source src="{{ . | relURL }}" type="video/webm"> {{ end }}
       {{ with .mp4 }}   <source src="{{ . | relURL }}" type="video/mp4"> {{ end }}
     </video>
   {{ end }}
+
+  {{ with .Site.Params.Banner.promo }}
+    <a href="#modal-promo"><div class="modal-btn">
+      <span class="icon far fa-play-circle"></span>
+      Watch the film
+    </div></a>
+    <div id="modal-promo" class="detail-backdrop" tabindex="-1" onclick="history.back()">
+      <div class="detail box" onclick="event.stopPropagation();">
+        <span class="icon major fas fa-times-circle" onclick="history.back()"></span>
+        <video preload="none" controls>
+          <source src="{{ . | relURL }}" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  {{ end }}
+
   <div id="banner-txtbg">
     <h2>{{ .Site.Params.title }}</h2>
     <p>{{ .Site.Params.subtitle }}</p>
