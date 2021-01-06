@@ -642,6 +642,12 @@
 					&:nth-child(2n-1) {
 						padding-left: 0;
 					}
+
+					&:hover {
+						.icon {
+							opacity: 0.83;
+						}
+					}
 				}
 
 				&:first-child {
@@ -1271,6 +1277,12 @@
 					display: inline-block;
 					padding-left: 0;
 
+					&:not(.opener) {
+						a:hover {
+							background-color: transparentize(_palette(header, fg-light), 0.65);
+						}
+					}
+
 					> ul {
 						display: none;
 					}
@@ -1584,6 +1596,7 @@
 			}
 			> video {
 				width: 100%;
+				background: black;
 			}
 		}
 	}
