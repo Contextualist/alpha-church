@@ -1508,7 +1508,7 @@
 			border-radius: 6px;
 			margin: 0 auto;
 			width: 48%;
-			min-width: 16em;
+			min-width: 19em;
 			padding: 3.4% 4%;
 
 			:last-child {
@@ -1524,6 +1524,7 @@
 				line-height: 1em;
 				margin: 0 0 0.5em 0;
 				padding: 0;
+				word-break: keep-all; // We do word-break manually with <wbr>
 			}
 
 			p {
@@ -2300,12 +2301,6 @@
 						}
 					}
 				}
-			}
-
-		/* Banner */
-
-			#banner {
-				padding: 5em 3em 4em 3em;
 			}
 
 		/* Main */

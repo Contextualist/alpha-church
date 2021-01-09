@@ -23,7 +23,7 @@
   {{ end }}
 
   <div id="banner-txtbg">
-    <h2>{{ .Site.Params.title }}</h2>
+    <h2>{{ .Site.Params.titleWithBr | safeHTML }}</h2>
     <p>{{ .Site.Params.subtitle }}</p>
     <ul class="actions special">
       {{ range .Params.Banner.button }}
