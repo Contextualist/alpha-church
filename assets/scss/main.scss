@@ -1510,6 +1510,9 @@
 			width: 48%;
 			min-width: 19em;
 			padding: 3.4% 4%;
+			@include breakpoint('<=mobile') {
+				width: 75%;
+			}
 
 			:last-child {
 				margin-bottom: 0;
@@ -1583,6 +1586,7 @@
 			min-height: 0;
 			width: 95vw;
 			padding: 0 !important;
+			background: black;
 			> .icon {
 				position: absolute;
 				top: -1em;
@@ -1597,6 +1601,7 @@
 			}
 			> video {
 				width: 100%;
+				max-height: 95vh;
 				background: black;
 			}
 		}
@@ -1669,7 +1674,7 @@
 
 	#footer {
 		background: #f0f0f0;
-		padding: 2em 0 4em 0;
+		padding: 1em 0 3em 0;
 		text-align: center;
 
 		.icons {
@@ -2183,7 +2188,7 @@
 		/* Footer */
 
 			#footer {
-				padding: 4em 0;
+				padding: 2em 0;
 
 				.copyright {
 					li {
