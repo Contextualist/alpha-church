@@ -37,4 +37,22 @@
 		{{- range .Site.Params.customCSS -}}
     	<link rel="stylesheet" href="{{ . | absURL }}">
   	{{- end -}}
+    <script>
+      // multilingual redirection
+      if (document.location.pathname == '/') {
+        let langPref = localStorage.getItem('langPref');
+        if (langPref !== "zh") {
+          if (langPref) { // user had set a pref
+            document.location.href = `/${langPref}`;
+          } else { // infer from browser settings
+            langPref = navigator.language.toLowerCase();
+            if (['zh-hk', 'zh-tw'].includes(langPref)) {
+              document.location.href = '/zt/';
+            } else if (langPref.startsWith('en')) {
+              document.location.href = '/en/';
+            }
+          }
+        }
+      }
+    </script>
 	</head>

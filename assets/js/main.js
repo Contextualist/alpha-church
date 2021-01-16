@@ -6,6 +6,13 @@
 
 (function($) {
 
+  // multilingual redirection
+  $('#nav > ul > li:first-child li a').on('click', (e) => {
+    let langPref = e.target.getAttribute('href').split('/')[3]; // https://domain/lang/...
+    if (!['zt', 'en'].includes(langPref)) langPref = 'zh';
+    localStorage.setItem('langPref', langPref);
+  })
+
 	var	$window = $(window),
 		$body = $('body'),
 		$header = $('#header'),
