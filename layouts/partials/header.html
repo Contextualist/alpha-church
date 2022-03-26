@@ -18,9 +18,12 @@
 				{{- end -}}
 			{{ end -}}" />
 		{{- with .OutputFormats.Get "rss" -}}
-			{{ printf `<link rel="%s" type="%s+%s" href="%s" title="%s" />` .Rel .MediaType.Type .MediaType.FirstSuffix.Suffix .Permalink $.Site.Title | safeHTML }}
+			{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 		{{- end -}}
 		{{ hugo.Generator }}
+		{{- with .Site.Params.Favicon.sml}}<link rel="shortcut icon" href="{{ . }}" sizes="16x16"/>{{ end -}}
+		{{- with .Site.Params.Favicon.med}}<link rel="shortcut icon" href="{{ . }}" sizes="32x32"/>{{ end -}}
+		{{- with .Site.Params.Favicon.lge}}<link rel="shortcut icon" href="{{ . }}" sizes="96x96"/>{{ end -}}
 		{{ with .Site.Params.Podcast.itunes }}
 			<meta name="apple-itunes-app" content="app-id={{ replaceRE "https\\:\\/\\/itunes\\.apple\\.com\\/[a-z]{2}\\/podcast\\/[a-z\\-]*\\/id(\\d{10}).*" "$1" . }}" />
 		{{ end }}
@@ -28,7 +31,7 @@
 		{{ template "_internal/twitter_cards.html" . }}
 		<link rel="stylesheet" href="{{ "fontawesome/css/all.min.css" | absURL }}" />
 		{{- $css := .Site.Data.libs.css -}}
-		{{ if .IsPage }}{{ printf "<link rel=\"stylesheet\" href=\"//cdn.plyr.io/%s/plyr.css\" integrity=\"%s\" crossorigin=\"anonymous\">" $css.plyr.version $css.plyr.integrity | safeHTML }}{{ end }}
+		{{ if .IsPage }}{{ printf "<link rel=\"stylesheet\" href=\"https://cdn.plyr.io/%s/plyr.css\" crossorigin=\"anonymous\">" $css.plyr.version | safeHTML }}{{ end }}
 		{{- $ieStyles := resources.Get "scss/ie8.scss" | toCSS | minify -}}
 		{{- $ieJs := resources.Get "js/ie/html5shiv.js" | minify -}}
 		{{ printf "<!--[if lte IE 8]><script src=\"%s\"></script><link rel=\"stylesheet\" href=\"%s\" /><![endif]-->" $ieJs.RelPermalink $ieStyles.RelPermalink | safeHTML }}
