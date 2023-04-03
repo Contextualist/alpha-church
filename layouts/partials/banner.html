@@ -2,7 +2,7 @@
 
   {{ with .Site.Params.Banner.video }}
     <video muted playsinline class="video-loading">
-      {{ with .webm }} <source src="{{ . | relURL }}" type="video/webm"> {{ end }}
+      {{ with .webm }} <source src="{{ . | relURL }}" type="video/webm; codecs=vp9"> {{ end }}
       {{ with .mp4 }}   <source src="{{ . | relURL }}" type="video/mp4"> {{ end }}
     </video>
   {{ end }}
