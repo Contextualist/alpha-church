@@ -18,7 +18,17 @@
                   <p>{{ $ser.text | markdownify }}</p>
                 </header>
               {{ end }}
-						{{ partial "map" . }}
+	              {{ with .Site.Params.Map }}
+	                {{ $mapdetails := dict
+	                    "points" ( slice ( dict
+	                    "longitude" .longitude
+	                    "latitude" .latitude
+	                    ) )
+	                    "id" "map_main"
+	                    "zoom" .zoom
+	                }}
+	                {{ partial "map" $mapdetails }}
+	              {{ end }}
 					</section>
 
 					{{ if .Params.Feature_icons.enable }}
@@ -73,13 +83,15 @@
 
 				</section>
 
+			{{ if .Params.CTA.enable }}
 			{{ "<!-- CTA -->" | safeHTML }}
 				<section id="cta"><a name="call-to-action"></a>
 
-					<!--<h2>{{ .Params.CTA.heading }}</h2>
-					<p>{{ .Params.CTA.message }}</p>-->
-					{{ partial "contact" . }}
+					{{ if .Params.CTA.heading }}<h2>{{ .Params.CTA.heading }}</h2>{{ end }}
+					{{ if .Params.CTA.message }}<p>{{ .Params.CTA.message }}</p>{{ end }}
+					{{ partial "contact" .}}
 
 				</section>
+			{{ end }} {{/* end if CTA*/}}
 {{ partialCached "footer" . }}
 {{ partial "scripts" . }}

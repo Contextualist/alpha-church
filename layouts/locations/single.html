@@ -7,8 +7,14 @@
 						{{ with .Params.subtitle }}<p>{{ . }}</p>{{ end }}
 					</header>
 					<div class="box">
-						{{ with .Params.image }}
-							<span class="image featured"><img src="{{ . | absURL }}" alt=""></span>
+						{{ with .Params.location }}
+						<span class="image featured">
+							{{ partial "map.html" (dict
+							"points" (slice .)
+							"id" "featured_map") }}
+						</span>
+						{{ else with .Params.images }}
+							<span class="image featured"><img src="{{ index . 0 | absURL }}" alt=""></span>
 						{{ end }}
 						<div class="page-content">{{ .Content }}</div>
 						{{ if or .Params.tags .Params.date }}

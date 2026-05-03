@@ -1,3 +1,4 @@
+<!-- layouts/partials/listbody.html -->
   <div class="box postlist">
   {{ $pages := .Paginator.Pages }}
   {{ $len := (len $pages) }}
@@ -42,5 +43,5 @@
       <hr />
     {{ end }}{{/* if */}}
   {{ end }} {{/* range */}}
-  {{ template "_internal/pagination.html" . }}
+  {{ partial "pagination.html" . }}
   </div>

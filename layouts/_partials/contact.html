@@ -1,10 +1,11 @@
-{{ with .Params.Contact.logo }}
+<!-- layouts/_partials/contact.html -->
+{{ with .Site.Params.Contact.logo }}
     <img src="{{ . | relURL }}">
 {{ end }}
 
-{{ if .Params.Contact.text }}
-	<p>{{ .Params.Contact.text | markdownify }}
-	{{ with .Params.Contact.phone }}
+{{ if .Site.Params.Contact.text }}
+	<p>{{ .Site.Params.Contact.text | markdownify }}
+	{{ with .Site.Params.Contact.phone }}
 		<br />
 		<a href="tel:{{ . }}" target="_blank" aria-label="{{ . }}">
 			<i class="icon fas fa-phone-alt">
@@ -14,7 +15,7 @@
 			{{ . }}
 		</a>
 	{{ end }}
-	{{ with .Params.Contact.email }}
+	{{ with .Site.Params.Contact.email }}
 		<br />
 		<a href="mailto:{{ . }}" target="_blank" aria-label="{{ . }}">
 			<i class="icon fas fa-envelope">
@@ -24,7 +25,7 @@
 			{{ . }}
 		</a>
 	{{ end }}
-	{{ with .Params.Contact.facebook }}
+	{{ with .Site.Params.Contact.facebook }}
 		<br />
 		<a href="//facebook.com/groups/{{ . }}" target="_blank" aria-label="{{ . }}">
 			<i class="icon fab fa-facebook">

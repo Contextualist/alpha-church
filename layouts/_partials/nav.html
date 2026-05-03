@@ -1,3 +1,4 @@
+<!-- layouts/_partials/nav.html -->
 <body {{ if .IsHome }} class="landing" {{ end }} >
   <div id="page-wrapper">
     <header id="header" {{ if .IsHome }} class="alt" {{ end }} >
@@ -7,14 +8,14 @@
       <nav id="nav">
         <ul>
           {{ $currentPage := . }}
-            {{ if .Site.IsMultiLingual }}
+            {{ if hugo.IsMultilingual }}
                 <li>
                     <a><i class="fas fa-language"></i>&#8287;<i class="fas fa-angle-down"></i></a>
                     <ul>
                       {{ $currentLanguage := .Site.Language }}
                       {{ range $translation := .Page.AllTranslations }}
-                        {{ if ne $translation.Lang $currentLanguage.Lang }}
-                          <li><a href="{{ $translation.Permalink }}">{{ $translation.Language.LanguageName }}</a></li>
+                        {{ if ne $translation.Language.Name $currentLanguage.Name }}
+                          <li><a href="{{ $translation.Permalink }}">{{ $translation.Language.Label }}</a></li>
                         {{ end }}
                       {{ end }}
                     </ul>
@@ -36,10 +37,10 @@
                                 <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
                               {{ end }}
                               </ul>
+                            </li>
                           {{ else }}
                             <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
                           {{ end }}
-                          </li>
                       {{ end }}
                     </ul>
                   </li>
